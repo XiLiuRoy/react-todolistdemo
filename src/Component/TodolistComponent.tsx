@@ -6,16 +6,16 @@ import { AddTodoInput } from './AddTodoComponent';
 export default class TodolistComponent extends Component<todolistProps> {
 
     /**
-     *
+     * Todo list component
      */
     constructor(props: todolistProps) {
         super(props);
-
+        this.props.loadTodo();
+        this.onDeleteClick.bind(this);
     }
 
-    componentWillMount() {
-        //dispatch = useDispatch(function)
-        //this.props.loadTodo();
+    onDeleteClick(id: string){
+        this.props.onDeleteClick(id);
     }
 
     render() {
@@ -34,10 +34,9 @@ export default class TodolistComponent extends Component<todolistProps> {
                             <span className="sr-only">Loading...</span>
                         </div>
                     </div> :
-
                         <ul className="list-group">
                             {this.props.todolist.map((todo) => {
-                                return <li className="list-group-item" key={todo.Id}>{todo.Name}</li>
+                                return <li className="list-group-item d-flex justify-content-between" key={todo.Id}>{todo.Name}<button onClick={()=>this.onDeleteClick(todo.Id)} className="btn btn-danger">Delete</button></li>
                             })}
                         </ul>}
                 </div>
