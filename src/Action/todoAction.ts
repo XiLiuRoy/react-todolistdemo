@@ -4,6 +4,7 @@ export const ADD_TODO = 'ADD_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 export const LOAD_TODO = 'LOAD_TODO';
 export const SET_TODO = 'SET_TODO';
+export const ADD_TODO_TO_LIST = 'ADD_TODO_TO_LIST';
 
 export interface addTodo {
     type: typeof ADD_TODO
@@ -24,7 +25,12 @@ interface setTodo {
     payload: Todo[]
 }
 
-export type Action = addTodo | deleteTodo | loadTodo |setTodo;
+interface addTodoToList {
+    type: typeof ADD_TODO_TO_LIST
+    payload: Todo
+}
+
+export type Action = addTodo | deleteTodo | loadTodo | setTodo | addTodoToList;
 
 export function addTodo(todo:string):Action{
     //Hack here as API requires coupe of fields not to be null :)
@@ -32,6 +38,13 @@ export function addTodo(todo:string):Action{
     return {
         type: ADD_TODO,
         payload: {Id:"", Name:todo, Description: todo, DueDate: '2022-12-10', CreatedDate: new Date("2022-12-10"), IsDone: false}
+    }
+}
+
+export function addTodoToList(todo:Todo):Action{
+    return {
+        type: ADD_TODO_TO_LIST,
+        payload: todo
     }
 }
 

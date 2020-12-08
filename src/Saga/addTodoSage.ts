@@ -1,6 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
+import { addTodo, addTodoToList, ADD_TODO } from '../Action/todoAction';
 
-import { ADD_TODO, addTodo } from '../Action/todoAction';
 import { postTodo } from '../API/api';
 
 export function* addTodoWatcher() {
@@ -8,6 +8,6 @@ export function* addTodoWatcher() {
 }
 
 function* addTodoFlow(addAction: addTodo) {
-    const updatedTodoWithId = yield call(postTodo,addAction.payload);
-    //TODO: update Todolist
+    const todoItem = yield call(postTodo,addAction.payload);
+    yield put(addTodoToList(todoItem));
 }

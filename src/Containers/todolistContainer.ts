@@ -10,7 +10,7 @@ const mapTodoListState = (state: AppState) => ({
 })
 
 const mapTodoListDispatch = {
-    onAddToDoClick: (todo:string) => addTodo(todo),
+    onAddToDoClick: (todo:string) => addTodo(todo), //TODO: change load to do to update id returned from server.
     onDeleteClick: (id:string) => deleteTodo(id),
     loadTodo: () => loadTodo()
 }
