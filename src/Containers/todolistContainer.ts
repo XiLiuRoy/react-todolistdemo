@@ -6,7 +6,8 @@ import { AppState } from '../Interface/todoInterface';
 
 const mapTodoListState = (state: AppState) => ({
     todolist: state.todolist,
-    isLoading: state.IsLoading
+    isLoading: state.IsLoading,
+    isAddingTodo: state.IsAddingTodo
 })
 
 const mapTodoListDispatch = {

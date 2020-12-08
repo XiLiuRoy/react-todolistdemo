@@ -1,9 +1,9 @@
-import { stat } from 'fs';
 import { Action } from '../Action/todoAction';
 import { AppState } from '../Interface/todoInterface';
 
 const initialState = {
     IsLoading: true,
+    IsAddingTodo: false,
     todolist: [
         {
             Id: "1",
@@ -16,9 +16,9 @@ const initialState = {
 export const todoReducer = (state: AppState = initialState, action: Action) => {
     switch (action.type) {
         case "ADD_TODO":
-            return { ...state, IsLoading: true };
+            return { ...state, IsAddingTodo: true };
         case "ADD_TODO_TO_LIST":
-            return { ...state, IsLoading: false, todolist: [...state.todolist, action.payload] }
+            return { ...state, IsAddingTodo: false, todolist: [...state.todolist, action.payload] }
         case "LOAD_TODO":
             return { ...state, IsLoading: true }
         case "SET_TODO":

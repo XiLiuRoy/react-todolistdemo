@@ -9,5 +9,6 @@ export interface Todo {
 
 export interface AppState{
     todolist: Todo[],
-    IsLoading: boolean
+    IsLoading: boolean,
+    IsAddingTodo: boolean
 }

@@ -21,7 +21,7 @@ export default class TodolistComponent extends Component<todolistProps> {
     render() {
         return (
             <div>
-                <AddTodoInput onAddClicked={this.props.onAddToDoClick} />
+                <AddTodoInput onAddClicked={this.props.onAddToDoClick} isAddingTodo={this.props.isAddingTodo} />
                 <div className="row justify-content-center py-5">
                     {this.props.isLoading ? <div>
                         <div className="spinner-grow text-primary" role="status">
